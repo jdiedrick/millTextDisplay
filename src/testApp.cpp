@@ -13,12 +13,6 @@ void testApp::setup(){
     int depth = 20;
     
     
-    text.init("STHeiti.ttf", fontsize, depth, "making a mill means \n afixing the wooden wheel \n just behind the dam");
-    
-    text2.init("STHeiti.ttf", fontsize, depth, "like slipping in the heart \n right behind the wooden cage \n of the breast");
-    
-    
-    
     camera.setup();
     drawtype=1;
     
@@ -33,6 +27,18 @@ void testApp::setup(){
     multiplier== 0.25; 
     
     rotation = true;
+    
+    inputText = ofBufferFromFile("../../python/output.txt");
+    
+    cout << inputText.getText() << endl;
+
+    
+    //    text.init("STHeiti.ttf", fontsize, depth, inputText.getText());
+
+    text.init("STHeiti.ttf", fontsize, depth, "making a mill means \n afixing the wooden wheel \n just behind the dam");
+    
+    text2.init("STHeiti.ttf", fontsize, depth, "like slipping in the heart \n right behind the wooden cage \n of the breast");
+
 
 }
 
@@ -45,13 +51,6 @@ void testApp::update(){
     
     spotLight.setOrientation( ofVec3f( 0, cos(ofGetElapsedTimef()) * RAD_TO_DEG, 0) );
 	spotLight.setPosition( mouseX, mouseY, 200);
-    
-//    if (ofGetFrameNum()%300 == 0){
-//        drawtype++;
-//        if(drawtype >=3){
-//            drawtype=1;
-//        }
-//    }
     
     
 
@@ -127,7 +126,6 @@ void testApp::draw(){
             drawtype=2;
         }
         
-        cout << color1 << endl;  
     }
     }
     
@@ -169,7 +167,6 @@ void testApp::draw(){
             drawtype=1;
         }
         
-     //   cout << color2 << " "<< switch2<< endl;
     }
     
     }

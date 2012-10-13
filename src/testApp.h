@@ -47,9 +47,9 @@ class testApp : public ofBaseApp{
     ofxGameCamera camera;
     
     int drawtype;
+   
+    ofBuffer inputText;
     
-    //fade text in and out
-    int counter;
-    int fader;
+    
 
 };
