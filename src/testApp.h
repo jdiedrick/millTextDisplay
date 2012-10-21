@@ -24,32 +24,29 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
         ofxExtrudedText text;
-    float color1;
-    float color2; 
-    
-    float incrementer; 
-    
-    bool switch1;
-    bool switch2;
-    
-    bool rotation;
-    
-    float multiplier; 
         ofxExtrudedText text2;
-    
-        ofLight pointLight;
-    
-    ofLight spotLight;
-	ofLight directionalLight;
-    
-        //ofEasyCam cam;
-    
-    ofxGameCamera camera;
-    
-    int drawtype;
-   
-    ofBuffer inputText;
-    
-    
 
+        float color1;
+        float color2; 
+    
+        float incrementer; 
+    
+        bool switch1;
+        bool switch2;
+    
+        bool rotation;
+        
+        ofxGameCamera camera;
+    
+        int drawtype;
+   
+        ofBuffer inputText;
+    
+        float rotationSpeed;
+        
+        bool fader;
+    
+        float rotationValue;
+    
+        int fadeColorValue;
 };
