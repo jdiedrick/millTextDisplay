@@ -26,14 +26,7 @@ class testApp : public ofBaseApp{
         ofxExtrudedText text;
         ofxExtrudedText text2;
 
-        float color1;
-        float color2; 
-    
-        float incrementer; 
-    
-        bool switch1;
-        bool switch2;
-    
+      
         bool rotation;
         
         ofxGameCamera camera;
@@ -43,9 +36,7 @@ class testApp : public ofBaseApp{
         ofBuffer inputText;
     
         float rotationSpeed;
-        
-        bool fader;
-    
+            
         float rotationValue;
     
         int fadeColorValue;

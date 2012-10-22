@@ -53,22 +53,9 @@ void testApp::setup(){
     drawtype=1;
     
     
-    //turn fading on and off
-    fader = true;
-    
-    
-    //set up initial colors for text
-    //we will be cyling through this to fade text from black to white to black
-    color1 = 255;
-    color2 = 255;
-    
-    
-    //switch cases to allow us to increment up or decrement down our text color
-    switch1 = false;
-    switch2 = false;
     
     //set rotation speed
-    rotationSpeed = 0.5;
+    rotationSpeed = 1.0;
     
     //initalize rotation. lets start rotating first
     rotation = true;
@@ -95,10 +82,9 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-}
-
-//--------------------------------------------------------------
-void testApp::draw(){
+    
+    //here is where we change rotation and fade color value. 
+    //pretty cludgly math but it does the trick...
     
     if (rotationValue==360.0) {
         
@@ -110,12 +96,18 @@ void testApp::draw(){
     
     fadeColorValue = (int)(((rotationValue-180.0)*255.0)/360.0) ;
     
-
+    
     fadeColorValue = abs(fadeColorValue);
     
     fadeColorValue = ofMap(fadeColorValue, 0, 127, 0, 255);
     
-     cout<<"Rotation: " << rotationValue << " Fade: " <<fadeColorValue<< " Drawing: " << drawtype << endl;
+    cout<<"Rotation: " << rotationValue << " Fade: " <<fadeColorValue<< " Drawing: " << drawtype << endl;
+}
+
+//--------------------------------------------------------------
+void testApp::draw(){
+    
+    
     
     //begin camera
     camera.begin();
@@ -128,23 +120,16 @@ void testApp::draw(){
     
     //rotate on y-axis. change rotation speed in ofRotateY()
     if(rotation)
-   // ofRotateY(ofGetFrameNum()/rotationSpeed);
         ofRotateY(rotationValue);
 
     
-    if ( (int)rotationValue == 180  && (int)fadeColorValue  == 0){
+    //something here isn't right...need to debug
+    if ( (int)rotationValue == 180  && (int)fadeColorValue  == 0){ 
         drawtype++;
 
-       if(drawtype==5){
+       if(drawtype==3){
             drawtype=1;
         }
-
-
-//    if ( (int)rotationValue % 180 == 0 && (int)rotationValue % 360 != 0){
-//        drawtype++;
-//        if(drawtype>2){
-//            drawtype=1;
-//        }
     
         
     }
@@ -177,33 +162,13 @@ void testApp::draw(){
         
         ofSetColor(fadeColorValue);
         text.letters[i].back.draw();
-        if(fader){
- 
-        if(color1<256 && switch1 == false){
-        color1 = color1 + incrementer;
-        }
-        
-        if(color1>255 && switch1 == false){
-            color1 = color1 - incrementer;
-            switch1 = true;
-        }
-        
-        if(color1>0 && switch1 == true){
-            color1 = color1 - incrementer;
-        }
-        
-        if(color1<0 && switch1 == true){
-            color1 = color1 + incrementer;
-            switch1=false;
-        //    drawtype=2;
-        }
-        }
+
     }
     }
     
     
     //if drawtype is 2, draw second text
-    if(drawtype == 3){
+    if(drawtype == 2){
     
     for(int i=0; i<text2.letters.size(); i++)
 
@@ -221,27 +186,6 @@ void testApp::draw(){
         ofSetColor(fadeColorValue);
         text2.letters[i].back.draw();
         
-        if(fader){
-
-        if(color2<256 && switch2 == false){
-            color2 = color2 + incrementer;
-        }
-        
-        if(color2>255 && switch2 == false){
-            color2 = color2 - incrementer;
-            switch2 = true;
-        }
-        
-        if(color2>0 && switch2 == true){
-            color2 = color2 - incrementer;
-        }
-        
-        if(color2<0 && switch2 == true){
-            color2 = color2 + incrementer;
-            switch2=false;
-          //  drawtype=1;
-        }
-        }
     }
     
     }
