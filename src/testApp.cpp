@@ -55,7 +55,7 @@ void testApp::setup(){
     
     
     //set rotation speed
-    rotationSpeed = 1.0;
+    rotationSpeed = 0.5;
     
     //initalize rotation. lets start rotating first
     rotation = true;
@@ -124,7 +124,7 @@ void testApp::draw(){
 
     
     //something here isn't right...need to debug
-    if ( (int)rotationValue == 180  && (int)fadeColorValue  == 0){ 
+    if ( (float)rotationValue == 180.0  && (int)fadeColorValue  == 0){ 
         drawtype++;
 
        if(drawtype==3){
