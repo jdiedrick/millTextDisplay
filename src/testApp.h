@@ -14,17 +14,14 @@ class testApp : public ofBaseApp{
 		void draw();
 
 		void keyPressed  (int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-		
+				
+        int fontsize;
+    
+        int depth;
+    
         ofxExtrudedText text;
         ofxExtrudedText text2;
+        ofxExtrudedText text3;
 
       
         bool rotation;
@@ -40,4 +37,8 @@ class testApp : public ofBaseApp{
         float rotationValue;
     
         int fadeColorValue;
+    
+    std::vector<ofxExtrudedText> texts;
+    
+        void drawText(int _drawtype);
 };
